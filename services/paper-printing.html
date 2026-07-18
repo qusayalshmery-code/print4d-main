@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طباعة الورقيات - مطبعة 4D البُعد الرابع | حلول طباعة ورقية متكاملة</title>
+    <meta name="description" content="مطبعة 4D البُعد الرابع - خدمات طباعة ورقية احترافية: كارتات شخصية، بروشورات، كتالوجات، بوسترات، وصولات، راجيتة أطباء، فورمات مختبرات.">
+    <meta name="keywords" content="طباعة ورق, كارتات شخصية, بروشورات, كتالوجات, بوسترات, وصولات, راجيتة, فورمات, مطبعة النجف">
+    <meta name="author" content="مطبعة 4D البُعد الرابع">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-72RMJF54S3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-72RMJF54S3');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --primary-light: #2d1b4e;
+            --accent: #e94560;
+            --accent-dark: #c03050;
+            --gold: #f5a623;
+            --orange: #ffb380;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f7;
+            --gray-200: #e5e5e7;
+            --gray-600: #6e6e73;
+            --gray-800: #1d1d1f;
+            --gradient-primary: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #4a1a5e 100%);
+            --gradient-accent: linear-gradient(135deg, #e94560 0%, #f5a623 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            color: var(--gray-800);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: white;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ===== Navbar ===== */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(12px);
+            color: white;
+            padding: 14px 0;
+            position: fixed; top: 0; left: 0; right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+        .navbar .container {
+            display: flex; align-items: center; justify-content: space-between; gap: 16px;
+        }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: var(--gradient-accent);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; color: white; font-size: 1rem;
+            box-shadow: 0 4px 16px rgba(233, 69, 96, 0.4);
+        }
+        .logo-main { color: white; font-weight: 900; font-size: 1rem; }
+        .nav-links { display: flex; gap: 20px; list-style: none; }
+        .nav-links a {
+            color: white; text-decoration: none; font-weight: 600; font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--orange); }
+        .nav-cta {
+            background: var(--gradient-accent);
+            color: white; padding: 8px 16px;
+            border-radius: 999px; text-decoration: none;
+            font-weight: 700; font-size: 0.88rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4); }
+
+        /* ===== Hero Section (Title + Image Side by Side) ===== */
+        .hero {
+            min-height: 50vh;
+            padding: 100px 20px 60px;
+            background: var(--gray-50);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hero-content { text-align: right; }
+        .hero-title {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            font-weight: 900; line-height: 1.15;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+        .hero-title .gradient {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            color: var(--gray-600);
+            line-height: 1.85;
+            max-width: 500px;
+        }
+        .hero-image {
+            width: 100%;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== Services Grid ===== */
+        section { padding: 60px 0; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-label {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 700; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 900; color: var(--primary);
+            margin-bottom: 12px; line-height: 1.3;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .service-card {
+            background: white;
+            border: 1px solid var(--gray-200);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 26px rgba(233, 69, 96, 0.12);
+        }
+        .service-img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            display: block;
+        }
+        .service-content {
+            padding: 16px 18px;
+            text-align: center;
+        }
+        .service-card h3 {
+            font-size: 0.98rem;
+            font-weight: 800; color: var(--primary);
+            margin-bottom: 6px;
+        }
+        .service-card p {
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            line-height: 1.55;
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background: #0a0a1a;
+            color: white;
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+        .footer-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; }
+        .footer-info { font-size: 0.9rem; opacity: 0.85; margin-bottom: 6px; }
+        .footer-links {
+            display: flex; gap: 16px; justify-content: center;
+            margin: 16px 0; flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--orange);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .footer-copy {
+            margin-top: 20px;
+            font-size: 0.8rem; opacity: 0.6;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 16px;
+        }
+
+        /* ===== Scroll Animations ===== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-up.visible {
+            opacity: 1; transform: translateY(0);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            section { padding: 50px 0; }
+            .hero { padding: 100px 16px 50px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 24px; text-align: center; }
+            .hero-content { text-align: center; }
+            .hero-subtitle { max-width: 100%; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .container { padding: 0 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <a href="../index.html" class="logo">
+            <div class="logo-icon">4D</div>
+            <span class="logo-main">مطبعة 4D البُعد الرابع</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="../index.html#services">خدماتنا</a></li>
+            <li><a href="../index.html#offers">العروض</a></li>
+            <li><a href="../index.html#gallery">أعمالنا</a></li>
+            <li><a href="../index.html#about">من نحن</a></li>
+        </ul>
+        <a href="https://wa.me/9647811409030" class="nav-cta">تواصل معنا</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-grid">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="gradient">طباعة الورقيات</span>
+            </h1>
+            <p class="hero-subtitle">حلول طباعة ورقية متكاملة لجميع احتياجاتك — من الكارتات الشخصية إلى الكتالوجات والبوسترات والوصولات، بدقة وجودة احترافية.</p>
+        </div>
+        <div class="hero-image">
+            <img src="../images/paper-printing/hero.jpg" alt="طباعة الورقيات">
+        </div>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section>
+    <div class="container">
+        <div class="section-header fade-up">
+            <span class="section-label">خدماتنا الورقية</span>
+            <h2 class="section-title">اختر الخدمة التي تهمك</h2>
+        </div>
+        <div class="services-grid">
+            <a href="business-cards.html" class="service-card fade-up">
+                <img src="../images/paper-printing/business-cards.jpg" alt="الكارتات الشخصية" class="service-img" loading="lazy">
+                <div class="service-content">
+                    <h3>الكارتات الشخصية</h3>
+                    <p>كارتات شخصية بتصاميم احترافية وألوان زاهية</p>
+                </div>
+            </a>
+            <a href="brochures.html" class="service-card fade-up">
+                <img src="../images/paper-printing/brochures.jpg" alt="البروشورات" class="service-img" loading="lazy">
+                <div class="service-content">
+                    <h3>البروشورات</h3>
+                    <p>بروشورات تسويقية بأحجام مختلفة وتصاميم جذابة</p>
+                </div>
+            </a>
+            <a href="catalogs.html" class="service-card fade-up">
+                <img src="../images/paper-printing/catalogs.jpg" alt="الكتالوجات" class="service-img" loading="lazy">
+                <div class="service-content">
+                    <h3>الكتالوجات</h3>
+                    <p>كتالوجات منتجات احترافية بجودة عالية</p>
+                </div>
+            </a>
+            <a href="paper-posters.html" class="service-card fade-up">
+                <img src="../images/paper-printing/posters.jpg" alt="البوسترات الورقية" class="service-img" loading="lazy">
+                <div class="service-content">
+                    <h3>البوسترات الورقية</h3>
+                    <p>بوسترات ورقية بأحجام كبيرة وألوان زاهية</p>
+                </div>
+            </a>
+            <a href="commercial-receipts.html" class="service-card fade-up">
+                <img src="../images/paper-printing/receipts.jpg" alt="الوصولات التجارية" class="service-img" loading="lazy">
+                <div class="service-content">
+                    <h3>الوصولات التجارية</h3>
+                    <p>وصولات وفواتير تجارية بأرقام متسلسلة</p>
+                </div>
+            </a>
+            <a href="doctor-prescriptions.html" class="service-card fade-up">
+                <img src="../images/paper-printing/prescriptions.jpg" alt="راجيتة أطباء" class="service-img" loading="lazy">
+                <div class="service-content">
+                    <h3>راجيتة أطباء</h3>
+                    <p>راجيتات طبية بتصميم احترافي ومقاسات مختلفة</p>
+                </div>
+            </a>
+            <a href="lab-company-forms.html" class="service-card fade-up">
+                <img src="../images/paper-printing/forms.jpg" alt="فورمات المختبرات والشركات" class="service-img" loading="lazy">
+                <div class="service-content">
+                    <h3>فورمات المختبرات والشركات</h3>
+                    <p>فورمات رسمية للشركات والمختبرات بتصاميم احترافية</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-title">مطبعة 4D البُعد الرابع</div>
+    <div class="footer-info">النجف الأشرف - شارع الإسكان</div>
+    <div class="footer-info">07811409030 | طباعة ورقية احترافية</div>
+    <div class="footer-links">
+        <a href="../index.html">الرئيسية</a>
+        <a href="../index.html#services">خدماتنا</a>
+        <a href="../index.html#offers">العروض</a>
+        <a href="../index.html#gallery">أعمالنا</a>
+        <a href="../index.html#about">من نحن</a>
+        <a href="https://wa.me/9647811409030">واتساب</a>
+    </div>
+    <div class="footer-copy">© 2026 مطبعة 4D البُعد الرابع - جميع الحقوق محفوظة</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+<!-- حماية من كرة Created by MiniMax -->
+<style>
+    #minimax-floating-ball,
+    [id*="minimax-floating"],
+    [id*="minimax-ball"],
+    [class*="minimax-ball"],
+    [class*="minimax-floating"],
+    [class*="minimax-logo"],
+    [class*="powered-by"],
+    a[href*="minimax.io"],
+    a[href*="agent.minimax"],
+    iframe[src*="minimax"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+</style>
+<script>
+    (function() {
+        function hidePlatformBalls() {
+            const selectors = ['#minimax-floating-ball', '[class*="minimax-ball"]', '[class*="powered-by"]'];
+            selectors.forEach(sel => {
+                document.querySelectorAll(sel).forEach(el => el.remove());
+            });
+        }
+        hidePlatformBalls();
+        setInterval(hidePlatformBalls, 500);
+    })();
+</script>
+
+
+<script>
+// === حماية كرة MiniMax ===
+(function() {
+  const style = document.createElement('style');
+  style.textContent = '#minimax-floating-ball, [class*="minimax"], [class*="MiniMax"] { display: none !important; visibility: hidden !important; opacity: 0 !important; }';
+  document.head.appendChild(style);
+  
+  const observer = new MutationObserver(function() {
+    document.querySelectorAll('[class*="minimax"], [class*="MiniMax"]').forEach(function(el) { el.remove(); });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+</body>
+</html>
