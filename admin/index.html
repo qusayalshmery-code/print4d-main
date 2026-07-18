@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة تحكم - مطبعة البُعد الرابع</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div id="app">
+    <!-- زر القائمة للموبايل -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn">☰ القائمة</button>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-box">
+          <span class="logo-text">4D</span>
+        </div>
+        <div>
+          <h2>لوحة التحكم</h2>
+          <p>مطبعة البُعد الرابع</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#site" class="nav-item active" data-tab="site">🏠 معلومات الموقع</a>
+        <a href="#hero" class="nav-item" data-tab="hero">🎬 الهيرو</a>
+        <a href="#services" class="nav-item" data-tab="services">📦 الأقسام</a>
+        <a href="#offers" class="nav-item" data-tab="offers">🎁 العروض</a>
+        <a href="#quick" class="nav-item" data-tab="quick">⚡ الوصول السريع</a>
+        <a href="#gallery" class="nav-item" data-tab="gallery">🖼️ معرض الأعمال</a>
+        <a href="#about" class="nav-item" data-tab="about">👥 من نحن</a>
+        <a href="#theme" class="nav-item" data-tab="theme">🎨 الستايل</a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="https://print4d-main.vercel.app" target="_blank" class="view-site-btn">🌐 زيارة الموقع</a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-bar">
+        <h1 id="page-title">معلومات الموقع</h1>
+        <div class="actions">
+          <button id="save-btn" class="btn btn-primary">💾 حفظ التغييرات</button>
+          <button id="reset-btn" class="btn btn-secondary">↺ إعادة تحميل</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- رسالة النجاح/الخطأ -->
+        <div id="toast" class="toast"></div>
+
+        <!-- Tab: معلومات الموقع -->
+        <section id="tab-site" class="tab-content active">
+          <h2>معلومات الموقع الأساسية</h2>
+          <p class="tab-desc">عدّل اسم الموقع، الشعار، معلومات التواصل</p>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>اسم الموقع</label>
+              <input type="text" id="site-name" placeholder="مطبعة البُعد الرابع">
+            </div>
+
+            <div class="form-group">
+              <label>شعار (نص)</label>
+              <input type="text" id="site-logo-text" placeholder="4D" maxlength="3">
+            </div>
+
+            <div class="form-group">
+              <label>العنوان الفرعي</label>
+              <input type="text" id="site-subtitle" placeholder="نطبع أحلامك بأحدث التقنيات">
+            </div>
+
+            <div class="form-group full">
+              <label>الوصف</label>
+              <textarea id="site-description" rows="3" placeholder="مطبعة متكاملة في النجف الأشرف..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>الموقع الجغرافي</label>
+              <input type="text" id="site-location" placeholder="النجف الأشرف، العراق">
+            </div>
+
+            <div class="form-group">
+              <label>رقم الواتساب</label>
+              <input type="tel" id="site-whatsapp" placeholder="9647811409030" dir="ltr">
+            </div>
+
+            <div class="form-group">
+              <label>رقم الهاتف</label>
+              <input type="tel" id="site-phone" placeholder="+9647811409030" dir="ltr">
+            </div>
+
+            <div class="form-group">
+              <label>البريد الإلكتروني</label>
+              <input type="email" id="site-email" placeholder="info@print4d.iq" dir="ltr">
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab: الهيرو -->
+        <section id="tab-hero" class="tab-content">
+          <h2>قسم الهيرو (الواجهة الرئيسية)</h2>
+          <p class="tab-desc">العنوان، الخلفية، الصورة، أزرار الـ CTA</p>
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label>نوع الخلفية</label>
+              <select id="hero-type">
+                <option value="gradient">تدرج لوني (Gradient)</option>
+                <option value="image">صورة</option>
+                <option value="video">فيديو</option>
+                <option value="solid">لون واحد</option>
+              </select>
+            </div>
+
+            <div class="form-group full" id="hero-gradient-group">
+              <label>التدرج اللوني (CSS)</label>
+              <input type="text" id="hero-background" placeholder="linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%)" dir="ltr">
+            </div>
+
+            <div class="form-group full" id="hero-image-group" style="display:none;">
+              <label>رابط الصورة</label>
+              <input type="url" id="hero-image" placeholder="https://..." dir="ltr">
+            </div>
+
+            <div class="form-group full" id="hero-video-group" style="display:none;">
+              <label>رابط الفيديو (MP4)</label>
+              <input type="url" id="hero-video" placeholder="https://..." dir="ltr">
+            </div>
+
+            <div class="form-group full" id="hero-solid-group" style="display:none;">
+              <label>اللون</label>
+              <input type="color" id="hero-solid-color" value="#0f0f23">
+            </div>
+
+            <hr style="grid-column: 1/-1; border: 0; border-top: 1px solid var(--border); margin: 8px 0;">
+
+            <div class="form-group full">
+              <label>العنوان الرئيسي</label>
+              <input type="text" id="hero-title" placeholder="مطبعة البُعد الرابع">
+            </div>
+
+            <div class="form-group full">
+              <label>الوصف</label>
+              <textarea id="hero-subtitle" rows="2" placeholder="نطبع أحلامك بأحدث التقنيات"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>نص الزر الأول</label>
+              <input type="text" id="hero-cta1-text" placeholder="تواصل عبر واتساب">
+            </div>
+
+            <div class="form-group">
+              <label>الإجراء (action)</label>
+              <select id="hero-cta1-action">
+                <option value="whatsapp">فتح واتساب</option>
+                <option value="scroll">تمرير لقسم</option>
+                <option value="link">رابط خارجي</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>نص الزر الثاني</label>
+              <input type="text" id="hero-cta2-text" placeholder="خدماتنا">
+            </div>
+
+            <div class="form-group">
+              <label>الإجراء (action)</label>
+              <select id="hero-cta2-action">
+                <option value="scroll">تمرير لقسم</option>
+                <option value="link">رابط خارجي</option>
+                <option value="whatsapp">فتح واتساب</option>
+              </select>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab: الأقسام -->
+        <section id="tab-services" class="tab-content">
+          <h2>الأقسام الـ 8 الرئيسية</h2>
+          <p class="tab-desc">عدّل الأقسام، غيّر الأيقونات، أخفِ أو أظهر، غيّر الترتيب</p>
+
+          <div class="services-list" id="services-list">
+            <!-- يتم بناؤها ديناميكياً -->
+          </div>
+        </section>
+
+        <!-- Tab: العروض -->
+        <section id="tab-offers" class="tab-content">
+          <h2>إدارة العروض</h2>
+          <p class="tab-desc">أضف، عدّل، احذف العروض</p>
+
+          <button class="btn btn-primary" id="add-offer-btn">+ إضافة عرض جديد</button>
+
+          <div class="offers-list" id="offers-list">
+            <!-- يتم بناؤها ديناميكياً -->
+          </div>
+        </section>
+
+        <!-- Tab: الوصول السريع -->
+        <section id="tab-quick" class="tab-content">
+          <h2>الوصول السريع</h2>
+          <p class="tab-desc">أزرار سريعة تظهر في الصفحة الرئيسية</p>
+
+          <button class="btn btn-primary" id="add-quick-btn">+ إضافة زر</button>
+
+          <div class="quick-list" id="quick-list">
+            <!-- يتم بناؤها ديناميكياً -->
+          </div>
+        </section>
+
+        <!-- Tab: معرض الأعمال -->
+        <section id="tab-gallery" class="tab-content">
+          <h2>معرض الأعمال</h2>
+          <p class="tab-desc">صور نماذج من أعمالنا (روابط فقط)</p>
+
+          <button class="btn btn-primary" id="add-gallery-btn">+ إضافة صورة</button>
+
+          <div class="gallery-list" id="gallery-list">
+            <!-- يتم بناؤها ديناميكياً -->
+          </div>
+        </section>
+
+        <!-- Tab: من نحن -->
+        <section id="tab-about" class="tab-content">
+          <h2>قسم من نحن</h2>
+          <p class="tab-desc">الوصف الرئيسي ومميزات المطبعة</p>
+
+          <div class="form-grid">
+            <div class="form-group full">
+              <label>العنوان</label>
+              <input type="text" id="about-title" placeholder="من نحن">
+            </div>
+
+            <div class="form-group full">
+              <label>الوصف</label>
+              <textarea id="about-description" rows="4"></textarea>
+            </div>
+
+            <div class="form-group full">
+              <label>المميزات (ميزة في كل سطر)</label>
+              <textarea id="about-features" rows="6" placeholder="✅ ميزة 1&#10;✅ ميزة 2&#10;✅ ميزة 3"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tab: الستايل -->
+        <section id="tab-theme" class="tab-content">
+          <h2>الألوان والستايل</h2>
+          <p class="tab-desc">الألوان الأساسية للموقع</p>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label>اللون الأساسي (كحلي)</label>
+              <input type="color" id="theme-primary" value="#0f0f23">
+            </div>
+
+            <div class="form-group">
+              <label>اللون الثانوي (أحمر)</label>
+              <input type="color" id="theme-secondary" value="#e94560">
+            </div>
+
+            <div class="form-group">
+              <label>اللون المميز (برتقالي)</label>
+              <input type="color" id="theme-accent" value="#ffb380">
+            </div>
+
+            <div class="form-group">
+              <label>اللون الذهبي (للعروض)</label>
+              <input type="color" id="theme-gold" value="#f5a623">
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal لإضافة/تعديل عرض -->
+  <div id="offer-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="offer-modal-title">إضافة عرض جديد</h3>
+        <button class="modal-close" onclick="closeOfferModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="offer-id-input">
+        <div class="form-grid">
+          <div class="form-group full">
+            <label>عنوان العرض</label>
+            <input type="text" id="offer-title-input">
+          </div>
+          <div class="form-group full">
+            <label>الوصف</label>
+            <textarea id="offer-desc-input" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label>السعر القديم</label>
+            <input type="text" id="offer-old-input" dir="ltr">
+          </div>
+          <div class="form-group">
+            <label>السعر الجديد</label>
+            <input type="text" id="offer-new-input" dir="ltr">
+          </div>
+          <div class="form-group">
+            <label>العملة</label>
+            <input type="text" id="offer-currency-input" value="د.ع">
+          </div>
+          <div class="form-group">
+            <label>الخصم (مثلاً: 50%)</label>
+            <input type="text" id="offer-discount-input">
+          </div>
+          <div class="form-group full">
+            <label>رابط الصورة</label>
+            <input type="url" id="offer-image-input" dir="ltr" placeholder="https://...">
+          </div>
+          <div class="form-group">
+            <label>رابط المنتج</label>
+            <input type="text" id="offer-product-input" placeholder="mugs.html">
+          </div>
+          <div class="form-group">
+            <label>كود الخصم</label>
+            <input type="text" id="offer-coupon-input" dir="ltr">
+          </div>
+          <div class="form-group">
+            <label>تاريخ البداية</label>
+            <input type="date" id="offer-from-input">
+          </div>
+          <div class="form-group">
+            <label>تاريخ النهاية</label>
+            <input type="date" id="offer-until-input">
+          </div>
+          <div class="form-group">
+            <label>نوع العرض</label>
+            <select id="offer-type-input">
+              <option value="discount">خصم فوري</option>
+              <option value="coupon">كود خصم</option>
+              <option value="bulk">عرض كمية</option>
+              <option value="bundle">اشترِ واحصل</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>تفعيل</label>
+            <select id="offer-active-input">
+              <option value="true">مفعّل</option>
+              <option value="false">معطّل</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeOfferModal()">إلغاء</button>
+        <button class="btn btn-primary" onclick="saveOffer()">حفظ العرض</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+  <script>
+  // === حماية كرة MiniMax ===
+  (function() {
+    const style = document.createElement('style');
+    style.textContent = '#minimax-floating-ball, [class*="minimax"], [class*="MiniMax"] { display: none !important; visibility: hidden !important; opacity: 0 !important; }';
+    document.head.appendChild(style);
+    
+    const observer = new MutationObserver(function() {
+      document.querySelectorAll('[class*="minimax"], [class*="MiniMax"]').forEach(function(el) { el.remove(); });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  })();
+  </script>
+</body>
+</html>
