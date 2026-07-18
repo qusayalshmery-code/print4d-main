@@ -61,10 +61,10 @@
         {
           "id": "paper",
           "title": "طباعة الورقيات",
-          "description": "كارتات شخصية، بروشورات، كتالوجات، بوسترات، وصولات",
+          "description": "بزنس كارد، بوسترات، فولدرات، ستيكرات",
           "icon": "📄",
           "color": "#2a1a3e",
-          "link": "services/paper-printing.html"
+          "link": "paper.html"
         },
         {
           "id": "banners",
