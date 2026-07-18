@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-72RMJF54S3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-72RMJF54S3');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البوسترات الورقية - مطبعة 4D البُعد الرابع</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .configurator-page { padding: 140px 0 60px; background: #f8f5f0; min-height: 100vh; }
+        .configurator-container {
+            max-width: 1600px; margin: 0 auto; padding: 0 0px;
+            display: grid; grid-template-columns: 1fr;
+            gap: 24px; align-items: start;
+            width: 100%;
+        }
+        .options-section { padding: 35px 20px; }
+        @media (max-width: 900px) { 
+            .configurator-container { grid-template-columns: 1fr; padding: 0 0px; gap: 16px; }
+            .options-section { padding: 25px 12px; }
+            .option-group { padding: 18px; }
+        }
+        @media (max-width: 480px) { 
+            .configurator-container { padding: 0 0px; gap: 12px; }
+            .options-section { padding: 18px 8px; }
+            .option-group { padding: 14px; }
+            .options-title { font-size: 1.2rem; padding-bottom: 10px; margin-bottom: 15px; }
+        }
+        @media (max-width: 380px) { 
+            .configurator-container { padding: 0 0px; }
+            .options-section { padding: 16px 6px; }
+        }
+        
+        .options-section {
+            background: white; border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .options-title {
+            color: var(--primary); font-size: 1.4rem; font-weight: 900;
+            margin-bottom: 20px; padding-bottom: 15px;
+            border-bottom: 2px solid var(--orange-light);
+        }
+        .option-group {
+            margin-bottom: 25px; padding: 22px;
+            background: linear-gradient(135deg, #f8f9fb, white);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-200);
+        }
+        .option-group.group-quantity { background: linear-gradient(135deg, #e3f2fd, #f8f9fb); border-left: 4px solid #1565c0; }
+        .option-group.group-size { background: linear-gradient(135deg, #f3e5f5, #f8f9fb); border-left: 4px solid #6a1b9a; }
+        .option-group.group-paper { background: linear-gradient(135deg, #fff8e1, #f8f9fb); border-left: 4px solid #f57c00; }
+        .option-group.group-sleeve { background: linear-gradient(135deg, #e0f7fa, #f8f9fb); border-left: 4px solid #00838f; }
+        .option-group.group-preview { background: linear-gradient(135deg, #fce4ec, #f8f9fb); border-left: 4px solid #c2185b; }
+        .option-group.group-upload { background: linear-gradient(135deg, #ede7f6, #f8f9fb); border-left: 4px solid #5e35b1; }
+        .option-group-title {
+            color: var(--primary); font-weight: 800; font-size: 1.05rem;
+            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+        }
+        .option-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+        .option-pill {
+            padding: 10px 20px; background: white;
+            border: 2px solid var(--gray-200); border-radius: var(--radius-pill);
+            cursor: pointer; transition: var(--transition);
+            font-weight: 700; color: var(--gray-700);
+            user-select: none;
+        }
+        .option-pill:hover { border-color: var(--orange-light); transform: translateY(-2px); }
+        .option-pill.selected { background: var(--primary); color: white; border-color: var(--primary); }
+        
+        .dropdown { position: relative; margin-top: 10px; z-index: 50; }
+        .dropdown.open { z-index: 9999; }
+        .dropdown-toggle {
+            width: 100%; padding: 12px 18px;
+            background: white; border: 2px solid var(--gray-200);
+            border-radius: var(--radius-pill); cursor: pointer;
+            font-family: inherit; font-size: 1rem; font-weight: 700;
+            color: var(--gray-700); text-align: right;
+            display: flex; align-items: center; justify-content: space-between;
+            transition: var(--transition);
+        }
+        .dropdown-toggle:hover { border-color: var(--orange-light); }
+        .dropdown-toggle.open { border-color: var(--primary); }
+        .dropdown-toggle::after { content: '▼'; color: var(--gray-500); transition: transform 0.3s; }
+        .dropdown-toggle.open::after { transform: rotate(180deg); }
+        .dropdown-menu {
+            position: absolute; top: 100%; left: 0; right: 0;
+            background: white; border: 2px solid var(--gray-200);
+            border-radius: var(--radius-md); margin-top: 5px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            z-index: 9999; max-height: 0; overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .dropdown-menu.open { max-height: 500px; overflow-y: auto; }
+        .dropdown-item {
+            padding: 12px 18px; cursor: pointer;
+            border-bottom: 1px solid var(--gray-100);
+            color: var(--gray-700);
+            transition: background 0.2s;
+        }
+        .dropdown-item:last-child { border-bottom: none; }
+        .dropdown-item:hover { background: var(--orange-soft); color: var(--primary); }
+        .dropdown-item.selected { background: var(--primary); color: white; }
+        .item-name { font-size: 1.1rem; font-weight: 800; display: block; }
+        .item-size { font-size: 0.8rem; opacity: 0.8; display: block; margin-top: 2px; }
+        
+        .summary-section {
+            margin-top: 30px; padding: 20px;
+            background: linear-gradient(135deg, #1a1a2e, #2a2a4a);
+            color: white; border-radius: var(--radius-md);
+        }
+        .summary-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 15px; color: var(--gold); }
+        .summary-item {
+            padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex; justify-content: space-between;
+        }
+        .summary-item:last-child { border-bottom: none; }
+        .summary-label { color: var(--orange-light); }
+        .summary-value { font-weight: 700; }
+        
+        /* 👁️ المعاينة بدون box-shadow في الأب لتفادي مشاكل الـ stacking */
+        .preview-box {
+            background: linear-gradient(135deg, #e94560, #1a1a2e);
+            color: white; display: flex; align-items: center; justify-content: center;
+            font-weight: 900; text-align: center; padding: 20px;
+            border-radius: 8px; transition: all 0.3s;
+        }
+        
+        .upload-zone {
+            display: block; padding: 30px 20px;
+            text-align: center; background: white;
+            border: 3px dashed #5e35b1; border-radius: var(--radius-md);
+            cursor: pointer; transition: all 0.2s;
+        }
+        .upload-zone:hover { border-color: #1a1a2e; background: #f3e5f5; }
+        
+        .design-note {
+            margin-top: 15px; padding: 18px;
+            background: linear-gradient(135deg, #fff8e1, #ffe0b2);
+            border-radius: var(--radius-md); border-right: 4px solid #f57c00;
+        }
+        
+        .whatsapp-cta {
+            display: block; text-align: center; margin-top: 25px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white; padding: 16px 30px; border-radius: var(--radius-pill);
+            font-weight: 800; font-size: 1.1rem; text-decoration: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+        .whatsapp-cta:hover { transform: translateY(-2px); }
+        
+        /* 🏷️ الشريط العلوي */
+        .nav-tagline {
+            display: flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, rgba(245, 166, 35, 0.15), rgba(233, 69, 96, 0.15));
+            padding: 8px 16px; border-radius: var(--radius-pill);
+            border: 1px solid var(--orange-light);
+            flex-shrink: 0; order: 2;
+        }
+        .tagline-icon { font-size: 1.2rem; }
+        .tagline-text {
+            color: var(--primary); font-weight: 800; font-size: 0.9rem;
+            white-space: nowrap; display: inline-block !important;
+        }
+        @media (max-width: 900px) { .tagline-text { font-size: 0.8rem; } }
+        @media (max-width: 700px) { .nav-tagline { padding: 6px 12px; } .tagline-text { font-size: 0.75rem; } }
+        
+        /* 🔘 زر فتح الخيارات */
+        #open-options-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 25px rgba(26, 26, 46, 0.4); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">4D</div>
+                <div class="logo-text">
+                    <span class="logo-main">مطبعة</span>
+                    <span class="logo-sub">البُعد الرابع</span>
+                </div>
+            </div>
+            <div class="nav-tagline">
+                <span class="tagline-icon">🖨️</span>
+                <span class="tagline-text">للطباعة والدعاية والإعلان</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html#services">خدماتنا</a></li>
+                <li><a href="../index.html#offers">العروض</a></li>
+                <li><a href="../index.html#gallery">أعمالنا</a></li>
+                <li><a href="../index.html#about">من نحن</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="configurator-page">
+        <div class="container">
+            <h1 style="text-align: center; color: var(--primary); font-size: 2.2rem; font-weight: 900; margin-bottom: 12px;">
+                🎨 البوسترات الورقية
+            </h1>
+            <p style="text-align: center; color: var(--gray-700); font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 0 auto 16px; font-weight: 600;">
+                البوستر الورقي هو رسالتك البصرية للعالم، وهو أداتك الأقوى في جذب الانتباه وتسويق فكرتك.
+            </p>
+            <p style="text-align: center; color: var(--gray-600); font-size: 1rem; line-height: 1.9; max-width: 800px; margin: 0 auto 30px;">
+                في مطبعة <strong>4D البُعد الرابع</strong> نطبع بوسترات ورقية بألوان نابضة ودقة فائقة، بمقاسات تبدأ من A4 وتصل إلى B1 للوحات الإعلانية الضخمة، مع
+                <strong>أسعار تنافسية</strong> و<strong>تسليم في وقت قياسي</strong>.
+            </p>
+
+            <div style="text-align: center; margin-bottom: 30px;">
+                <button id="open-options-btn" onclick="toggleOptions()" style="background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border: none; padding: 18px 40px; font-size: 1.15rem; font-weight: 800; border-radius: var(--radius-pill); cursor: pointer; box-shadow: 0 8px 20px rgba(26, 26, 46, 0.3); font-family: inherit; transition: transform 0.2s;">
+                    🛒 ابدأ تخصيص بوسترتك الآن
+                </button>
+                <p style="margin-top: 14px; color: var(--gray-600); font-size: 0.9rem;">اضغط الزر لتظهر لك خيارات التخصيص</p>
+            </div>
+
+            <div class="configurator-container">
+                <div class="options-section" id="options-section" style="display: none;">
+                    <h2 class="options-title">⚙️ حدد خيارات بوسترتك</h2>
+                    <p style="text-align: center; color: var(--gray-600); font-size: 0.95rem; margin: -10px 0 25px; line-height: 1.7;">
+                        اختر المقاس والكمية والخيارات المناسبة لك من الأسفل، ومباشرة نرسل لك السعر والمدة<br>
+                        <strong style="color: var(--accent);">نحن مستعدون لطباعة أي كمية وأي مواصفات تريدها في بوسترتك</strong>
+                    </p>
+
+                    <!-- 1. الكمية -->
+                    <div class="option-group group-quantity">
+                        <div class="option-group-title">📦 الكمية المطلوبة:</div>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-top: 10px;">
+                            <input type="number" id="quantity-count" min="1" value="100" 
+                                   style="width: 140px; padding: 12px 18px; border: 2px solid var(--gray-200); border-radius: var(--radius-pill); font-family: inherit; font-size: 1.1rem; text-align: center; font-weight: 700;">
+                            <span style="color: var(--gray-600); font-size: 1rem; font-weight: 700;">بوستر</span>
+                        </div>
+                    </div>
+
+                    <!-- 2. قياس البوستر -->
+                    <div class="option-group group-size">
+                        <div class="option-group-title">📏 قياس البوستر:</div>
+                        <div class="dropdown" data-group="size">
+                            <button class="dropdown-toggle" type="button">
+                                <span>اختر قياس البوستر</span>
+                                <span></span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item" data-value="A4"><span class="item-name">A4</span><span class="item-size">21 × 29.7 سم</span></div>
+                                <div class="dropdown-item" data-value="B4"><span class="item-name">B4</span><span class="item-size">25 × 35.3 سم</span></div>
+                                <div class="dropdown-item" data-value="A3"><span class="item-name">A3</span><span class="item-size">29.7 × 42 سم</span></div>
+                                <div class="dropdown-item" data-value="B3"><span class="item-name">B3</span><span class="item-size">35.3 × 50 سم</span></div>
+                                <div class="dropdown-item" data-value="A2"><span class="item-name">A2</span><span class="item-size">42 × 59.4 سم</span></div>
+                                <div class="dropdown-item" data-value="B2"><span class="item-name">B2</span><span class="item-size">50 × 70.7 سم</span></div>
+                                <div class="dropdown-item" data-value="A1"><span class="item-name">A1</span><span class="item-size">59.4 × 84.1 سم</span></div>
+                                <div class="dropdown-item" data-value="B1"><span class="item-name">B1</span><span class="item-size">70.7 × 100 سم</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. نوع الورق -->
+                    <div class="option-group group-paper">
+                        <div class="option-group-title">📄 نوع الورق:</div>
+                        <div class="dropdown" data-group="paper">
+                            <button class="dropdown-toggle" type="button">
+                                <span>اختر نوع الورق</span>
+                                <span></span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item" data-value="70"><span class="item-name">عادي 70 غرام</span><span class="item-size">خفيف للملصقات الصغيرة</span></div>
+                                <div class="dropdown-item" data-value="80"><span class="item-name">عادي 80 غرام</span><span class="item-size">وزن متوسط للطباعة اليومية</span></div>
+                                <div class="dropdown-item" data-value="115"><span class="item-name">آرت 115 غرام</span><span class="item-size">لمعان خفيف</span></div>
+                                <div class="dropdown-item" data-value="130"><span class="item-name">آرت 130 غرام</span><span class="item-size">متانة ولمعان</span></div>
+                                <div class="dropdown-item" data-value="150"><span class="item-name">آرت 150 غرام</span><span class="item-size">متين ولامع</span></div>
+                                <div class="dropdown-item" data-value="200"><span class="item-name">آرت 200 غرام</span><span class="item-size">سُمك جيد للبوسترات</span></div>
+                                <div class="dropdown-item" data-value="250"><span class="item-name">آرت 250 غرام</span><span class="item-size">سميك وفاخر</span></div>
+                                <div class="dropdown-item" data-value="300"><span class="item-name">آرت 300 غرام</span><span class="item-size">كرتوني فاخر للوحات</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. السليفان (يظهر من 130 فما فوق) -->
+                    <div class="option-group group-sleeve" id="sleeve-group" style="display: none;">
+                        <div class="option-group-title">✨ طبقة السليفان (تعطي الورقة مظهراً لامعاً أو مطفياً فاخراً):</div>
+                        <div class="option-row" data-group="sleeve">
+                            <div class="option-pill" data-value="none">❌ بدون سليفان</div>
+                            <div class="option-pill" data-value="glossy">✨ سليفان لامع</div>
+                            <div class="option-pill" data-value="matte">🌫️ سليفان مطفي</div>
+                        </div>
+                    </div>
+
+                    <!-- 5. المعاينة -->
+                    <div class="option-group group-preview">
+                        <div class="option-group-title">👁️ معاينة البوستر:</div>
+                        <p style="text-align: center; color: var(--accent-dark); font-weight: 700; font-size: 0.95rem; margin: 8px 0;">
+                            📐 المعاينة تعتمد على المقاس الذي تختاره
+                        </p>
+                        <div style="display: flex; justify-content: center; align-items: center; min-height: 280px; padding: 20px; background: #f8f9fb; border-radius: var(--radius-md);">
+                            <div id="poster-preview-box" class="preview-box" style="width: 100px; height: 140px;">
+                                <div>
+                                    <div style="font-size: 1.2rem; margin-bottom: 6px;">بوستر</div>
+                                    <div style="font-size: 2rem;" id="preview-size-text">A4</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="preview-label" style="text-align: center; margin-top: 10px; color: var(--accent-dark); font-weight: 700;">
+                            📋 المعاينة بأبعاد نسبية للمقاس المختار
+                        </div>
+                    </div>
+
+                    <!-- 6. رفع التصميم -->
+                    <div class="option-group group-upload">
+                        <div class="option-group-title">📤 صورة التصميم الجاهز:</div>
+                        <div style="margin-bottom: 15px;">
+                            <div style="color: var(--gray-700); font-weight: 700; font-size: 0.95rem; margin-bottom: 10px;">📌 هل لديك تصميم جاهز للبوستر؟</div>
+                            <div class="option-row" data-group="hasDesign">
+                                <div class="option-pill" data-value="yes">✅ نعم، عندي تصميم</div>
+                                <div class="option-pill" data-value="no">❌ لا، أحتاج تصميم</div>
+                            </div>
+                        </div>
+                        <div id="upload-area" style="display: none; margin-top: 15px;">
+                            <label for="design-file" class="upload-zone">
+                                <div style="font-size: 3rem; margin-bottom: 10px;">📎</div>
+                                <div style="color: var(--primary); font-weight: 800; font-size: 1rem;">اضغط هنا لرفع التصميم</div>
+                                <div style="color: var(--gray-600); font-size: 0.85rem; margin-top: 6px;">JPG, PNG, PDF (حتى 50 ميجا للبوسترات الكبيرة)</div>
+                                <input type="file" id="design-file" accept="image/*,.pdf" style="display: none;">
+                            </label>
+                            <div id="file-info" style="margin-top: 12px; padding: 12px; background: #e8f5e9; border-radius: var(--radius-sm); display: none;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="font-size: 1.5rem;">✅</span>
+                                    <div style="flex: 1;">
+                                        <div id="file-name" style="font-weight: 700; color: var(--gray-800);"></div>
+                                        <div id="file-size" style="font-size: 0.85rem; color: var(--gray-600);"></div>
+                                    </div>
+                                    <button type="button" id="remove-file" style="background: #d32f2f; color: white; border: none; padding: 6px 12px; border-radius: var(--radius-sm); cursor: pointer; font-weight: 700;">🗑️ حذف</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="design-note" class="design-note" style="display: none;">
+                            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                                <span style="font-size: 2rem;">⚠️</span>
+                                <div>
+                                    <div style="font-weight: 800; color: #e65100; margin-bottom: 6px; font-size: 1rem;">ملاحظة مهمة</div>
+                                    <p style="color: #5d4037; line-height: 1.8; font-size: 0.95rem; margin: 0;">
+                                        <strong>التصميم لا يشمل هذا السعر</strong> المذكور في الخيارات.<br>
+                                        سعر التصميم يُحسب <strong>حسب التعقيد</strong> ويتفق عليه لاحقاً معك.<br>
+                                        بعد إكمال الطلب سنتواصل معك لتحديد التكلفة النهائية.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 📊 ملخص -->
+                    <div class="summary-section">
+                        <div class="summary-title">📋 ملخص الطلب</div>
+                        <div class="summary-item"><span class="summary-label">الكمية:</span><span class="summary-value" id="sum-qty">100</span></div>
+                        <div class="summary-item"><span class="summary-label">قياس البوستر:</span><span class="summary-value" id="sum-size">لم يحدد</span></div>
+                        <div class="summary-item"><span class="summary-label">نوع الورق:</span><span class="summary-value" id="sum-paper">لم يحدد</span></div>
+                        <div class="summary-item" id="sum-sleeve-row" style="display: none;"><span class="summary-label">السليفان:</span><span class="summary-value" id="sum-sleeve">-</span></div>
+                        <div class="summary-item"><span class="summary-label">التصميم:</span><span class="summary-value" id="sum-design">-</span></div>
+                    </div>
+
+                    <a href="#" id="whatsapp-order" class="whatsapp-cta">💬 اطلب عبر واتساب</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/9647811409030" class="whatsapp-float" target="_blank">💬</a>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border: none; padding-top: 0;">
+                <p>© 2026 مطبعة 4D البُعد الرابع. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const labels = {
+            'paper': {
+                '70': 'عادي 70 غرام', '80': 'عادي 80 غرام',
+                '115': 'آرت 115 غرام', '130': 'آرت 130 غرام',
+                '150': 'آرت 150 غرام', '200': 'آرت 200 غرام',
+                '250': 'آرت 250 غرام', '300': 'آرت 300 غرام'
+            },
+            'sleeve': { 'none': 'بدون سليفان', 'glossy': 'سليفان لامع', 'matte': 'سليفان مطفي' },
+            'size': {
+                'A4': 'A4 (21 × 29.7 سم)', 'B4': 'B4 (25 × 35.3 سم)',
+                'A3': 'A3 (29.7 × 42 سم)', 'B3': 'B3 (35.3 × 50 سم)',
+                'A2': 'A2 (42 × 59.4 سم)', 'B2': 'B2 (50 × 70.7 سم)',
+                'A1': 'A1 (59.4 × 84.1 سم)', 'B1': 'B1 (70.7 × 100 سم)'
+            }
+        };
+
+        const sizeDimensions = {
+            'A4': { w: 21, h: 29.7 }, 'B4': { w: 25, h: 35.3 },
+            'A3': { w: 29.7, h: 42 }, 'B3': { w: 35.3, h: 50 },
+            'A2': { w: 42, h: 59.4 }, 'B2': { w: 50, h: 70.7 },
+            'A1': { w: 59.4, h: 84.1 }, 'B1': { w: 70.7, h: 100 }
+        };
+
+        const selected = { qty: 100, size: null, paper: null, sleeve: null, hasDesign: null };
+        let selectedDesignFile = null;
+
+        // نفس نظام commercial-receipts
+        function selectOption(group, value, label) {
+            selected[group] = value;
+
+            // تحديث pills
+            document.querySelectorAll(`[data-group="${group}"] .option-pill`).forEach(p => {
+                p.classList.remove('selected');
+                if (p.dataset.value === value) p.classList.add('selected');
+            });
+
+            // تحديث dropdown
+            const dropdown = document.querySelector(`[data-group="${group}"].dropdown`);
+            if (dropdown) {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const nameEl = dropdown.querySelector(`.dropdown-item[data-value="${value}"] .item-name`);
+                const sizeEl = dropdown.querySelector(`.dropdown-item[data-value="${value}"] .item-size`);
+                if (toggle) {
+                    const textSpan = toggle.querySelector('span:first-child');
+                    if (textSpan) {
+                        if (nameEl && sizeEl) textSpan.textContent = nameEl.textContent.trim() + ' - ' + sizeEl.textContent.trim();
+                        else textSpan.textContent = label || textSpan.textContent;
+                    }
+                }
+                dropdown.querySelectorAll('.dropdown-item').forEach(i => {
+                    i.classList.toggle('selected', i.dataset.value === value);
+                });
+                dropdown.classList.remove('open');
+                if (toggle) toggle.classList.remove('open');
+                const menu = dropdown.querySelector('.dropdown-menu');
+                if (menu) menu.classList.remove('open');
+            }
+
+            // منطق خاص بالبوسترات
+            if (group === 'paper') {
+                const sleeveGroup = document.getElementById('sleeve-group');
+                if (sleeveGroup) {
+                    const paperValue = parseInt(value);
+                    if (paperValue >= 130) {
+                        sleeveGroup.style.display = 'block';
+                    } else {
+                        sleeveGroup.style.display = 'none';
+                        selected.sleeve = null;
+                        document.querySelectorAll('[data-group="sleeve"] .option-pill').forEach(p => p.classList.remove('selected'));
+                    }
+                }
+            }
+
+            if (group === 'size' && sizeDimensions[value]) {
+                const box = document.getElementById('poster-preview-box');
+                if (box) {
+                    const dims = sizeDimensions[value];
+                    const maxWidth = 320;
+                    const scale = maxWidth / Math.max(dims.w, dims.h);
+                    box.style.width = (dims.w * scale) + 'px';
+                    box.style.height = (dims.h * scale) + 'px';
+                    document.getElementById('preview-size-text').textContent = value;
+                }
+            }
+
+            if (group === 'hasDesign') {
+                const uploadArea = document.getElementById('upload-area');
+                const designNote = document.getElementById('design-note');
+                if (value === 'yes') {
+                    uploadArea.style.display = 'block';
+                    designNote.style.display = 'none';
+                } else {
+                    uploadArea.style.display = 'none';
+                    designNote.style.display = 'block';
+                    selectedDesignFile = null;
+                    const fileInput = document.getElementById('design-file');
+                    if (fileInput) fileInput.value = '';
+                    document.getElementById('file-info').style.display = 'none';
+                }
+            }
+
+            updateSummary();
+            updateWhatsApp();
+        }
+
+        function updateSummary() {
+            document.getElementById('sum-qty').textContent = selected.qty;
+            document.getElementById('sum-size').textContent = selected.size ? labels.size[selected.size] : 'لم يحدد';
+            document.getElementById('sum-paper').textContent = selected.paper ? labels.paper[selected.paper] : 'لم يحدد';
+            const sleeveRow = document.getElementById('sum-sleeve-row');
+            if (selected.sleeve && selected.sleeve !== 'none') {
+                sleeveRow.style.display = 'flex';
+                document.getElementById('sum-sleeve').textContent = labels.sleeve[selected.sleeve];
+            } else if (selected.sleeve === 'none') {
+                sleeveRow.style.display = 'flex';
+                document.getElementById('sum-sleeve').textContent = 'بدون سليفان';
+            } else {
+                sleeveRow.style.display = 'none';
+            }
+            const designText = selected.hasDesign === 'yes' ? '✅ جاهز (سيتم الرفع)' : selected.hasDesign === 'no' ? '❌ يحتاج تصميم' : '-';
+            document.getElementById('sum-design').textContent = designText;
+        }
+
+        function updateWhatsApp() {
+            let msg = '🎨 طلب بوستر ورقي:\n\n';
+            msg += '📦 الكمية: ' + selected.qty + ' بوستر\n';
+            if (selected.size) msg += '📏 المقاس: ' + labels.size[selected.size] + '\n';
+            if (selected.paper) msg += '📄 نوع الورق: ' + labels.paper[selected.paper] + '\n';
+            if (selected.sleeve && selected.sleeve !== 'none') msg += '✨ السليفان: ' + labels.sleeve[selected.sleeve] + '\n';
+            if (selected.hasDesign === 'yes') msg += '📤 التصميم: جاهز (سيتم رفعه)\n';
+            else if (selected.hasDesign === 'no') msg += '🎨 التصميم: أحتاج تصميم (يحسب لاحقاً)\n';
+            msg += '\nممكن تأكيد السعر والمدة؟';
+            document.getElementById('whatsapp-order').href = 'https://wa.me/9647811409030?text=' + encodeURIComponent(msg);
+        }
+
+        document.getElementById('quantity-count').addEventListener('input', e => {
+            selected.qty = parseInt(e.target.value) || 1;
+            updateSummary(); updateWhatsApp();
+        });
+
+        document.querySelectorAll('.dropdown').forEach(dd => {
+            const toggle = dd.querySelector('.dropdown-toggle');
+            toggle.addEventListener('click', e => {
+                e.stopPropagation();
+                document.querySelectorAll('.dropdown-menu.open').forEach(m => m.classList.remove('open'));
+                document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+                const menu = dd.querySelector('.dropdown-menu');
+                menu.classList.toggle('open');
+                dd.classList.toggle('open');
+                toggle.classList.toggle('open');
+            });
+
+            dd.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const group = dd.dataset.group;
+                    const value = item.dataset.value;
+                    selectOption(group, value, '');
+                });
+            });
+        });
+
+        document.querySelectorAll('.option-row .option-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                const row = pill.closest('.option-row');
+                const group = row.dataset.group;
+                selectOption(group, pill.dataset.value, pill.textContent.trim());
+            });
+        });
+
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown-menu.open').forEach(m => m.classList.remove('open'));
+                document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+            }
+        });
+
+        // رفع الملف
+        document.getElementById('design-file')?.addEventListener('change', e => {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 50 * 1024 * 1024) {
+                alert('⚠️ حجم الملف كبير جداً (الحد الأقصى 50 ميجا)');
+                return;
+            }
+            selectedDesignFile = file;
+            document.getElementById('file-info').style.display = 'block';
+            document.getElementById('file-name').textContent = '📄 ' + file.name;
+            document.getElementById('file-size').textContent = 'الحجم: ' + (file.size / 1024 / 1024).toFixed(2) + ' ميجا';
+        });
+
+        document.getElementById('remove-file')?.addEventListener('click', () => {
+            selectedDesignFile = null;
+            document.getElementById('file-info').style.display = 'none';
+            document.getElementById('design-file').value = '';
+        });
+
+        function toggleOptions() {
+            const section = document.getElementById('options-section');
+            const btn = document.getElementById('open-options-btn');
+            if (section.style.display === 'none') {
+                section.style.display = 'block';
+                btn.textContent = '✖ إغلاق خيارات التخصيص';
+                btn.style.background = 'linear-gradient(135deg, #6b7280, #374151)';
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                section.style.display = 'none';
+                btn.textContent = '🛒 ابدأ تخصيص بوسترتك الآن';
+                btn.style.background = 'linear-gradient(135deg, var(--primary), var(--accent))';
+            }
+        }
+    </script>
+<style>
+#minimax-floating-ball {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 12px;
+  background: #222222;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  color: #F8F8F8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#minimax-floating-ball:hover {
+  transform: translateY(-2px);
+  background: #383838;
+}
+.minimax-ball-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minimax-logo-wave {
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg%20preserveAspectRatio%3D%27none%27%20width%3D%27100%25%27%20height%3D%27100%25%27%20overflow%3D%27visible%27%20style%3D%27display%3A%20block%3B%27%20viewBox%3D%270%200%20170.136%20138.225%27%20fill%3D%27none%27%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%3E%3Cg%20id%3D%27Frame%202116748449%27%3E%3Cpath%20id%3D%27Subtract%27%20d%3D%27M170%20101.783C170%20105.144%20168.49%20108.327%20165.886%20110.453L134.963%20135.702C132.964%20137.334%20130.463%20138.225%20127.883%20138.225H10.4938C4.69824%20138.225%200%20133.527%200%20127.732V39.2289C0%2035.8597%201.51758%2032.6698%204.13162%2030.5442L38.5402%202.56547C40.536%200.942662%2043.0298%200.0567377%2045.602%200.0567377H159.506C165.302%200.0567377%20170%204.75498%20170%2010.5506V101.783Z%27%20fill%3D%27black%27%20style%3D%27fill%3Ablack%3Bfill-opacity%3A1%3B%27/%3E%3Cpath%20id%3D%27Subtract_2%27%20d%3D%27M149.011%2094.4632C149.011%2096.1471%20148.253%2097.7415%20146.946%2098.8043L125.893%20115.936C124.895%20116.748%20123.648%20117.191%20122.361%20117.191H24.6479C22.716%20117.191%2021.15%20115.625%2021.15%20113.693V46.1166C21.15%2044.4267%2021.9135%2042.8274%2023.2274%2041.7648L47.367%2022.2437C48.3638%2021.4376%2049.607%2020.9982%2050.8888%2020.9988L145.514%2021.0427C147.446%2021.0436%20149.011%2022.6094%20149.011%2024.5406V94.4632Z%27%20fill%3D%27white%27%20style%3D%27fill%3Awhite%3Bfill-opacity%3A1%3B%27/%3E%3Cpath%20id%3D%27Rectangle%20111142564%27%20d%3D%27M42.111%2080.8025C42.111%2077.7115%2044.6167%2075.2057%2047.7077%2075.2057H60.9999C64.0908%2075.2057%2066.5966%2077.7115%2066.5966%2080.8025V121.029H42.111V80.8025Z%27%20fill%3D%27black%27%20style%3D%27fill%3Ablack%3Bfill-opacity%3A1%3B%27/%3E%3Cpath%20id%3D%27Rectangle%20111142567%27%20d%3D%27M79.1894%2080.8025C79.1894%2077.7115%2081.6952%2075.2057%2084.7861%2075.2057H98.0783C101.169%2075.2057%20103.675%2077.7115%20103.675%2080.8025V121.029H79.1894V80.8025Z%27%20fill%3D%27black%27%20style%3D%27fill%3Ablack%3Bfill-opacity%3A1%3B%27/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 11px;
+  background-color: #8FD1FF;
+  border-radius: 4px;
+}
+
+.minimax-ball-text {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.minimax-close-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.minimax-close-icon:hover {
+  opacity: 1;
+}
+</style>
+<div id="minimax-floating-ball">
+  <div class="minimax-ball-content">
+    <div class="minimax-logo-wave"></div>
+    <span class="minimax-ball-text">Created by MiniMax Agent</span>
+  </div>
+  <div class="minimax-close-icon">×</div>
+</div>
+<script>
+// Initialize floating ball functionality
+function initFloatingBall() {
+  const ball = document.getElementById('minimax-floating-ball');
+  if (!ball) return;
+
+  // Initial animation
+  ball.style.opacity = '0';
+  ball.style.transform = 'translateY(20px)';
+
+  setTimeout(() => {
+    ball.style.opacity = '1';
+    ball.style.transform = 'translateY(0)';
+  }, 500);
+
+  // Handle logo click
+  const ballContent = ball.querySelector('.minimax-ball-content');
+  ballContent.addEventListener('click', function (e) {
+    e.stopPropagation();
+    window.open('https://agent.minimax.io/', '_blank');
+    ball.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      ball.style.transform = 'scale(1)';
+    }, 100);
+  });
+
+  // Handle close button click
+  const closeIcon = ball.querySelector('.minimax-close-icon');
+  closeIcon.addEventListener('click', function (e) {
+    e.stopPropagation();
+    ball.style.opacity = '0';
+    ball.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+      ball.style.display = 'none';
+    }, 300);
+  });
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', initFloatingBall); 
+</script>
+
+<script>
+// === حماية كرة MiniMax ===
+(function() {
+  const style = document.createElement('style');
+  style.textContent = '#minimax-floating-ball, [class*="minimax"], [class*="MiniMax"] { display: none !important; visibility: hidden !important; opacity: 0 !important; }';
+  document.head.appendChild(style);
+  
+  const observer = new MutationObserver(function() {
+    document.querySelectorAll('[class*="minimax"], [class*="MiniMax"]').forEach(function(el) { el.remove(); });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+</body>
+</html>
