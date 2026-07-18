@@ -1,0 +1,99 @@
+{
+  "offers": [
+    {
+      "id": 1,
+      "type": "discount",
+      "typeLabel": "خصم فوري",
+      "typeColor": "#e94560",
+      "title": "عرض الأكواب الخاصة",
+      "description": "اطبع أكواب خاصة بكميات كبيرة بأسعار مخفضة. اطبع صورك أو شعاراتك على أكواب سيراميك فاخرة.",
+      "image": "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=800",
+      "oldPrice": "5000",
+      "newPrice": "2500",
+      "currency": "د.ع",
+      "discount": "50%",
+      "productLink": "mugs.html",
+      "couponCode": "MUG50",
+      "autoApply": true,
+      "conditions": [
+        "العرض يشمل جميع أنواع الأكواب",
+        "الحد الأدنى للطلب: 10 قطع"
+      ],
+      "validFrom": "2026-07-15",
+      "validUntil": "2026-12-31",
+      "active": true
+    },
+    {
+      "id": 2,
+      "type": "coupon",
+      "typeLabel": "كود خصم",
+      "typeColor": "#f5a623",
+      "title": "حزم الليزر",
+      "description": "احفر على الخشب أو الأكريليك أو الجلد بكميات كبيرة. استخدم كود الخصم عند الطلب.",
+      "image": "https://images.unsplash.com/photo-1561070791-2526d30994b8?w=800",
+      "oldPrice": "15000",
+      "newPrice": "9999",
+      "currency": "د.ع",
+      "discount": "33%",
+      "productLink": "laser.html",
+      "couponCode": "LASER10",
+      "autoApply": true,
+      "conditions": [
+        "استخدم الكود عند الطلب",
+        "يشمل جميع خدمات الليزر",
+        "صالح لمرة واحدة لكل زبون"
+      ],
+      "validFrom": "2026-07-10",
+      "validUntil": "2026-08-15",
+      "active": true
+    },
+    {
+      "id": 3,
+      "type": "bulk",
+      "typeLabel": "عرض كمية",
+      "typeColor": "#ffb380",
+      "title": "بزنس كارد فاخر",
+      "description": "1000 بزنس كارد بتصميم احترافي وطباعة فاخرة. كل ما زادت الكمية زاد الخصم!",
+      "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800",
+      "oldPrice": "25000",
+      "newPrice": "15000",
+      "currency": "د.ع",
+      "discount": "40%",
+      "productLink": "paper.html",
+      "couponCode": "CARD40",
+      "autoApply": true,
+      "conditions": [
+        "1000 قطعة بسعر 15000 د.ع",
+        "5000 قطعة = 25% خصم إضافي",
+        "10000 قطعة = 30% خصم إضافي"
+      ],
+      "validFrom": "2026-07-01",
+      "validUntil": "2026-09-30",
+      "active": true
+    },
+    {
+      "id": 4,
+      "type": "bundle",
+      "typeLabel": "اشترِ واحصل",
+      "typeColor": "#9b59b6",
+      "title": "عرض الكتب + البزنس كارد",
+      "description": "اطبع كتابك الكامل واحصل على 100 بزنس كارد مجاناً! حزمة مثالية للمؤلفين.",
+      "image": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=800",
+      "oldPrice": "75000",
+      "newPrice": "45000",
+      "currency": "د.ع",
+      "discount": "40%",
+      "productLink": "books.html",
+      "couponCode": "BOOKCARD",
+      "autoApply": false,
+      "conditions": [
+        "يشمل: كتاب 100 صفحة + 100 بزنس كارد",
+        "الكتاب يشمل التصميم والتنضيد والتجليد",
+        "البزنس كارد بتصميم احترافي"
+      ],
+      "validFrom": "2026-07-15",
+      "validUntil": "2026-12-31",
+      "active": true
+    }
+  ]
+}
