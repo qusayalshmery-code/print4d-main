@@ -1,0 +1,182 @@
+{
+  "site": {
+    "name": "مطبعة البُعد الرابع",
+    "subtitle": "نطبع أحلامك بأحدث التقنيات",
+    "description": "مطبعة متكاملة في النجف الأشرف نقدم خدمات الطباعة والليزر والـ UV والأقمشة والكتب",
+    "location": "النجف الأشرف، العراق",
+    "whatsapp": "9647811409030",
+    "phone": "+9647811409030",
+    "email": "info@print4d.iq",
+    "logo": {
+      "type": "svg",
+      "text": "4D",
+      "subtext": "مطبعة"
+    }
+  },
+  "theme": {
+    "primary": "#0f0f23",
+    "secondary": "#e94560",
+    "accent": "#ffb380",
+    "gold": "#f5a623",
+    "offWhite": "#f8f6f1",
+    "text": "#1a1a2e",
+    "textLight": "#666"
+  },
+  "hero": {
+    "type": "gradient",
+    "background": "linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #2a1a3e 100%)",
+    "title": "مطبعة البُعد الرابع",
+    "subtitle": "نطبع أحلامك بأحدث التقنيات",
+    "cta1": {
+      "text": "تواصل معنا",
+      "action": "whatsapp"
+    },
+    "cta2": {
+      "text": "خدماتنا",
+      "action": "scroll",
+      "target": "#services"
+    }
+  },
+  "sections": {
+    "offers": {
+      "enabled": true,
+      "title": "🔥 عروض حصرية",
+      "subtitle": "عروض محدودة لا تفوتها",
+      "autoRotate": true,
+      "rotateInterval": 5000
+    },
+    "services": {
+      "enabled": true,
+      "title": "خدماتنا",
+      "subtitle": "كل ما تحتاجه في مكان واحد",
+      "items": [
+        {
+          "id": "books",
+          "title": "طباعة الكتب",
+          "description": "تأليف، طباعة، تجليد، إيداع، ISBN",
+          "icon": "📚",
+          "color": "#1a1a2e",
+          "link": "books.html"
+        },
+        {
+          "id": "paper",
+          "title": "طباعة الورقيات",
+          "description": "بزنس كارد، بوسترات، فولدرات، ستيكرات",
+          "icon": "📄",
+          "color": "#2a1a3e",
+          "link": "paper.html"
+        },
+        {
+          "id": "banners",
+          "title": "البنرات واللافتات",
+          "description": "فلكس، PVC، لوحات إعلانية",
+          "icon": "🪧",
+          "color": "#3a1a4e",
+          "link": "banners.html"
+        },
+        {
+          "id": "laser",
+          "title": "الليزر CNC",
+          "description": "قص وحفر رقمي على جميع الخامات",
+          "icon": "⚡",
+          "color": "#4a1a5e",
+          "link": "laser.html"
+        },
+        {
+          "id": "uv",
+          "title": "طباعة UV",
+          "description": "UV Flatbed و UV DTF على أي سطح",
+          "icon": "🖨️",
+          "color": "#5a1a6e",
+          "link": "uv.html"
+        },
+        {
+          "id": "fabric",
+          "title": "الأقمشة والأسطح",
+          "description": "تيشيرتات، أكياس، قبعات، موكيت",
+          "icon": "👕",
+          "color": "#6a1a7e",
+          "link": "fabric.html"
+        },
+        {
+          "id": "neon",
+          "title": "الإعلانات الضوئية والواجهات",
+          "description": "نيون، حروف مضيئة، واجهات زجاجية",
+          "icon": "💡",
+          "color": "#7a1a8e",
+          "link": "neon.html"
+        },
+        {
+          "id": "gifts",
+          "title": "الهدايا والمناسبات",
+          "description": "هدايا مخصصة، أطقم، تغليف فاخر",
+          "icon": "🎁",
+          "color": "#8a1a9e",
+          "link": "gifts.html"
+        }
+      ]
+    },
+    "quickAccess": {
+      "enabled": true,
+      "title": "الوصول السريع",
+      "subtitle": "كل خدماتنا في مكان واحد",
+      "items": []
+    },
+    "gallery": {
+      "enabled": true,
+      "title": "من أعمالنا",
+      "subtitle": "نماذج من إبداعاتنا",
+      "items": [
+        {
+          "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600",
+          "title": "بزنس كارد فاخر"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600",
+          "title": "كتالوج احترافي"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=600",
+          "title": "غلاف كتاب"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600",
+          "title": "طباعة بنر"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1561070791-2526d30994b8?w=600",
+          "title": "حفر ليزر"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1611241893603-3c359704e0ee?w=600",
+          "title": "طباعة UV"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600",
+          "title": "تيشيرت مطبوع"
+        },
+        {
+          "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
+          "title": "طباعة أكواب"
+        }
+      ]
+    },
+    "about": {
+      "enabled": true,
+      "title": "من نحن",
+      "description": "مطبعة البُعد الرابع - وجهتك الأولى للطباعة الاحترافية في النجف الأشرف. نقدم خدمات متكاملة تشمل الطباعة على جميع الخامات، الليزر، UV، الأقمشة، والكتب. نلتزم بأعلى معايير الجودة مع خبرة تتجاوز 10 سنوات. هدفنا: تحقيق رؤيتك بأفضل شكل ممكن.",
+      "features": [
+        "✅ أحدث المعدات والتقنيات",
+        "✅ جودة طباعة فائقة",
+        "✅ أسعار تنافسية",
+        "✅ سرعة في التنفيذ",
+        "✅ خدمة عملاء متميزة"
+      ]
+    }
+  },
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "telegram": ""
+  }
+}
