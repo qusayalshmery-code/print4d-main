@@ -38,17 +38,7 @@
     }
   },
   "sections": {
-    "offers": {
-      "enabled": true,
-      "title": "🔥 عروض حصرية",
-      "subtitle": "عروض محدودة لا تفوتها",
-      "autoRotate": true,
-      "rotateInterval": 5000
-    },
     "services": {
-      "enabled": true,
-      "title": "خدماتنا",
-      "subtitle": "كل ما تحتاجه في مكان واحد",
       "items": [
         {
           "id": "books",
@@ -117,66 +107,18 @@
       ]
     },
     "quickAccess": {
-      "enabled": true,
-      "title": "الوصول السريع",
-      "subtitle": "كل خدماتنا في مكان واحد",
       "items": []
     },
     "gallery": {
-      "enabled": true,
-      "title": "من أعمالنا",
-      "subtitle": "نماذج من إبداعاتنا",
-      "items": [
-        {
-          "image": "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600",
-          "title": "بزنس كارد فاخر"
-        },
-        {
-          "image": "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=600",
-          "title": "كتالوج احترافي"
-        },
-        {
-          "image": "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=600",
-          "title": "غلاف كتاب"
-        },
-        {
-          "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=600",
-          "title": "طباعة بنر"
-        },
-        {
-          "image": "https://images.unsplash.com/photo-1561070791-2526d30994b8?w=600",
-          "title": "حفر ليزر"
-        },
-        {
-          "image": "https://images.unsplash.com/photo-1611241893603-3c359704e0ee?w=600",
-          "title": "طباعة UV"
-        },
-        {
-          "image": "https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=600",
-          "title": "تيشيرت مطبوع"
-        },
-        {
-          "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600",
-          "title": "طباعة أكواب"
-        }
-      ]
+      "items": []
     },
     "about": {
-      "enabled": true,
       "title": "من نحن",
-      "description": "مطبعة البُعد الرابع - وجهتك الأولى للطباعة الاحترافية في النجف الأشرف. نقدم خدمات متكاملة تشمل الطباعة على جميع الخامات، الليزر، UV، الأقمشة، والكتب. نلتزم بأعلى معايير الجودة مع خبرة تتجاوز 10 سنوات. هدفنا: تحقيق رؤيتك بأفضل شكل ممكن.",
+      "description": "مطبعة البُعد الرابع - وجهتك الأولى للطباعة الاحترافية في النجف الأشرف.",
       "features": [
-        "✅ أحدث المعدات والتقنيات",
-        "✅ جودة طباعة فائقة",
-        "✅ أسعار تنافسية",
-        "✅ سرعة في التنفيذ",
-        "✅ خدمة عملاء متميزة"
+        "✅ ميزة 1",
+        "✅ ميزة 2"
       ]
     }
-  },
-  "social": {
-    "facebook": "",
-    "instagram": "",
-    "telegram": ""
   }
 }
